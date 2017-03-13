@@ -1,0 +1,98 @@
+
+
+frameFeatures class - doesn't really need to be a class?'
+
+constructor: needs position for this frame + frameFeatures of previous frame
+    call init kinematic features
+    call init posture features
+    call init symmetry features
+
+members:
+    frame identifier
+    positions of joints (all)
+    velocities of joints (all)
+    accelerations of joints (hands, shoulders, elbows)
+    jerk (hands, shoulders, elbows)
+    leaning positions (trunk - head)
+    leaning velocities (trunk - head)
+    distances from body (all)
+    distances from head (hands, shoulders)
+    3d symmetry (for the whole body)
+    triangular symmetry (hands, shoulders)
+    direction (whole body, hands, elbows)
+    kinetic energy (whole body)
+    contraction index (whole body)
+    dynamic contraction index (whole body)
+
+    body planes (saggital, transverse, coronal)
+
+member functions?:
+    calculate velocity (pos joint, prev pos) - for one joint
+    calculate acceleration(vel joint, prev vel) - for one joint
+    calculate jerk (acc joint, prev acc) - for one joint
+
+    calculate leaning position (pos head, pos trunk?)
+    calculate leaning velocity (leaning pos, prev leaning pos)
+
+    calculate distance from body (pos joint, pos body) - for one joint
+    calculate distance from head (pos joint, pos head) - for one joint
+
+    calculate 3d symmetry (sided joint distances from joints)
+    calculate triangular symmetry (distance head-joint, body planes?)
+
+    calculate direction (possibly use Quaternion orientation of joints)
+
+    calculate kinetic energy (velocities of all joints)
+
+    calculate contraction index (positions of all joints)
+    calculate dynamic contraction index (contraction index, prev cotraction index)
+
+    init kinematic features (all positions, frameFeatures prev frame)
+        for all joints
+            call calculate velocity
+        end
+
+        for hands, shoulders, elbows
+            call calculate acceleration
+            call calculate jerk
+        end
+
+        call calculate kinetic energy
+        call calculate direction
+    end
+
+
+    needed for next two functions sided joints = hands, elbows, shoulders, hips, knees, feet
+
+    init posture features (all positions, frameFeatures prev frame)
+        call calculate contraction index (all positions)
+        call calculate dynamic contraction index (contraction index, prev contraction index)
+
+        call calculate leaning position (head trunk positions)
+        call calculate leaning velocity (leaning position, previous leaning position)
+
+        for sided joints
+            call calculate distance from body
+        end
+
+        for hands and shoulders
+            call calculate distance from head
+        end
+    end
+
+    init symmetry features (body distances, head distances)
+        call calculate 3d symmetry (all calculated body distances)
+
+        for hands and shoulders
+            call calculate triangular symmetry
+        end
+    end
+
+
+getter functions
+    get feature information
+    or getter functions for each feature?
+
+
+
+

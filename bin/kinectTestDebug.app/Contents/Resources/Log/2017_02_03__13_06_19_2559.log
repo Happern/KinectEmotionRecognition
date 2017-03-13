@@ -1,0 +1,37 @@
+  1467403	INFO      	Log	XnLog.cpp	349	New log started on 2017-02-03 13:06:19
+  1467433	INFO      	Log	XnLog.cpp	322	--- Filter Info --- Minimum Severity: VERBOSE
+  1467455	VERBOSE   	OniContext	OniContext.cpp	144	No override device in configuration file
+  1467487	VERBOSE   	OniContext	OniContext.cpp	155	Configuration has been read from '/Users/happern/Library/DeveloperUserInstalled/of_v0.9.8_osx_release/apps/myApps/kinectTest/bin/kinectTestDebug.app/Contents/MacOS/OpenNI.ini'
+  1467496	VERBOSE   	OniContext	OniContext.cpp	162	OpenNI 2.2.0 (Build 21)-MacOSX (May 29 2013 14:03:30)
+  1467504	VERBOSE   	OniContext	OniContext.cpp	184	Using '/Users/happern/Library/DeveloperUserInstalled/of_v0.9.8_osx_release/apps/myApps/kinectTest/bin/kinectTestDebug.app/Contents/MacOS/OpenNI2/Drivers' as driver path
+  1467512	VERBOSE   	OniContext	OniContext.cpp	207	Looking for drivers in drivers repository '/Users/happern/Library/DeveloperUserInstalled/of_v0.9.8_osx_release/apps/myApps/kinectTest/bin/kinectTestDebug.app/Contents/MacOS/OpenNI2/Drivers'
+  1599153	INFO      	Log	XnLog.cpp	349	New log started on 2017-02-03 13:06:19
+  1599183	INFO      	Log	XnLog.cpp	322	--- Filter Info --- Minimum Severity: VERBOSE
+  1599192	VERBOSE   	xnUSB	XnLinuxUSB.cpp	379	Initializing USB...
+  1661363	INFO      	xnUSB	XnLinuxUSB.cpp	407	USB is initialized.
+  1665110	INFO      	Log	XnLog.cpp	349	New log started on 2017-02-03 13:06:19
+  1665138	INFO      	Log	XnLog.cpp	322	--- Filter Info --- Minimum Severity: VERBOSE
+  1665147	VERBOSE   	xnUSB	XnLinuxUSB.cpp	379	Initializing USB...
+  1693491	INFO      	xnUSB	XnLinuxUSB.cpp	407	USB is initialized.
+  1757364	INFO      	Freenect2Driver	DeviceDriver.cpp	446	Found device freenect2://0?serial=033181540947
+  1757388	INFO      	Freenect2Driver	DeviceDriver.cpp	409	Driver: register new uri: freenect2://0?serial=033181540947
+  1757400	INFO      	OniDeviceDriver	OniDeviceDriver.cpp	139	Device connected: Microsoft Kinect (freenect2://0?serial=033181540947)
+  1757447	INFO      	OniDeviceDriver	OniDeviceDriver.cpp	156	Device state changed: Microsoft Kinect (freenect2://0?serial=033181540947) to 0
+  1757463	INFO      	Freenect2Driver	DeviceDriver.cpp	409	Driver: register new uri: freenect2://0?serial=033181540947&depth-size=640x480
+  1757468	INFO      	OniDeviceDriver	OniDeviceDriver.cpp	139	Device connected: Microsoft Kinect (freenect2://0?serial=033181540947&depth-size=640x480)
+  1757478	INFO      	OniDeviceDriver	OniDeviceDriver.cpp	156	Device state changed: Microsoft Kinect (freenect2://0?serial=033181540947&depth-size=640x480) to 0
+  1757483	INFO      	Freenect2Driver	DeviceDriver.cpp	409	Driver: register new uri: freenect2://0?serial=033181540947&depth-size=512x424
+  1757487	INFO      	OniDeviceDriver	OniDeviceDriver.cpp	139	Device connected: Microsoft Kinect (freenect2://0?serial=033181540947&depth-size=512x424)
+  1757492	INFO      	OniDeviceDriver	OniDeviceDriver.cpp	156	Device state changed: Microsoft Kinect (freenect2://0?serial=033181540947&depth-size=512x424) to 0
+  1760725	VERBOSE   	OniContext	OniContext.cpp	389	Trying to open device by URI '(NULL)'
+  1760770	INFO      	Freenect2Driver	DeviceDriver.cpp	488	deiveOpen: freenect2://0
+  1760781	INFO      	Freenect2Driver	DeviceDriver.cpp	490	    serial = 033181540947
+  1760789	INFO      	Freenect2Driver	DeviceDriver.cpp	504	Opening device freenect2://0
+  2753314	INFO      	Freenect2Driver	DeviceDriver.cpp	254	Device: createStream(depth)
+  2753482	INFO      	Freenect2Driver	DeviceDriver.cpp	203	Freenect2Driver::Device: start()
+224808666	INFO      	Freenect2Driver	DeviceDriver.cpp	212	Freenect2Driver::Device: stop()
+225037912	INFO      	Freenect2Driver	DeviceDriver.cpp	267	Device: destroyStream(depth)
+225039525	INFO      	Freenect2Driver	DeviceDriver.cpp	527	Closing device freenect2://0?serial=033181540947
+225039546	INFO      	Freenect2Driver	DeviceDriver.cpp	212	Freenect2Driver::Device: stop()
+225039550	INFO      	Freenect2Driver	DeviceDriver.cpp	220	Freenect2Driver::Device: close()
+225039554	INFO      	Freenect2Driver	DeviceDriver.cpp	212	Freenect2Driver::Device: stop()

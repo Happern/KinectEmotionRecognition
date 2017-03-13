@@ -1,0 +1,22 @@
+   320218	INFO      	Log	XnLog.cpp	349	New log started on 2017-02-01 17:22:27
+   320250	INFO      	Log	XnLog.cpp	322	--- Filter Info --- Minimum Severity: VERBOSE
+   320272	VERBOSE   	OniContext	OniContext.cpp	144	No override device in configuration file
+   320304	VERBOSE   	OniContext	OniContext.cpp	155	Configuration has been read from '/Users/happern/Library/DeveloperUserInstalled/of_v0.9.8_osx_release/apps/myApps/kinectTest/bin/kinectTestDebug.app/Contents/MacOS/OpenNI.ini'
+   320311	VERBOSE   	OniContext	OniContext.cpp	162	OpenNI 2.2.0 (Build 21)-MacOSX (May 29 2013 14:03:30)
+   320317	VERBOSE   	OniContext	OniContext.cpp	184	Using '/Users/happern/Library/DeveloperUserInstalled/of_v0.9.8_osx_release/apps/myApps/kinectTest/bin/kinectTestDebug.app/Contents/MacOS/OpenNI2/Drivers' as driver path
+   320324	VERBOSE   	OniContext	OniContext.cpp	207	Looking for drivers in drivers repository '/Users/happern/Library/DeveloperUserInstalled/of_v0.9.8_osx_release/apps/myApps/kinectTest/bin/kinectTestDebug.app/Contents/MacOS/OpenNI2/Drivers'
+   323380	INFO      	Log	XnLog.cpp	349	New log started on 2017-02-01 17:22:27
+   323398	INFO      	Log	XnLog.cpp	322	--- Filter Info --- Minimum Severity: VERBOSE
+   323406	VERBOSE   	xnUSB	XnLinuxUSB.cpp	379	Initializing USB...
+   328649	INFO      	xnUSB	XnLinuxUSB.cpp	407	USB is initialized.
+   330351	INFO      	Log	XnLog.cpp	349	New log started on 2017-02-01 17:22:27
+   330385	INFO      	Log	XnLog.cpp	322	--- Filter Info --- Minimum Severity: VERBOSE
+   330398	VERBOSE   	xnUSB	XnLinuxUSB.cpp	379	Initializing USB...
+   413862	INFO      	xnUSB	XnLinuxUSB.cpp	407	USB is initialized.
+   414403	WARNING   	xnOS	XnLinuxSharedLibs.cpp	60	Failed loading lib: dlopen(/Users/happern/Library/DeveloperUserInstalled/of_v0.9.8_osx_release/apps/myApps/kinectTest/bin/kinectTestDebug.app/Contents/MacOS/OpenNI2/Drivers/libfreenect2-openni2.0.dylib, 2): Library not loaded: /usr/local/opt/glfw/lib/libglfw.3.dylib
+  Referenced from: /Users/happern/Library/DeveloperUserInstalled/of_v0.9.8_osx_release/apps/myApps/kinectTest/bin/kinectTestDebug.app/Contents/MacOS/OpenNI2/Drivers/libfreenect2-openni2.0.dylib
+  Reason: image not found
+
+   414426	VERBOSE   	OniContext	OniContext.cpp	246	Couldn't use file 'libfreenect2-openni2.0.dylib' as a device driver
+   416982	VERBOSE   	OniContext	OniContext.cpp	389	Trying to open device by URI '(NULL)'
+   417017	ERROR     	OniContext	OniContext.cpp	399	Can't open default device - none found

@@ -1,0 +1,14 @@
+in order to construct a frameFeatures object, we need to pass information from the
+sensor
+    - positions (x, y, z)
+    - orientations
+    - previous frame's frameFeatures object
+
+the frameFeatures for frames will be kept in a buffer/a list of frameFeatures of length x
+x is to be determined
+
+for each coming frame a new frameFeatures object will be constructed and stored, older ones
+will be released
+
+what is the best structure for that? queue? (pop + append)
+

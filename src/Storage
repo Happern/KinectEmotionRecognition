@@ -1,0 +1,50 @@
+what info will be stored in recordings?
+
+-- images for each frame?
+-- depth data
+-- nite's processed data
+    definitely:
+        user id
+        center of mass
+        joint positions x 15 3 numbers
+        joint orientations x 15 (quaternion representation?)
+    other things:
+        confidences for everything
+        user's state lost, new etc
+
+---------------------------------------
+For each frame for each user
+
+UserData
+---
+user id - getId
+boundingbox? - getBoundingBox
+centerofmass - getCenterOfMass
+inNew - isNew
+isVisible - isVisible
+isLost - isLost
+---
+UserData.getSkeleton()
+
+Skeleton
+---
+state - getState() -- only tracked?
+---
+For each Joint
+
+Joint
+---
+type - getType
+position - getPosition
+positionConfidence - getPositionConfidence
+orientation - getOrientation
+orientationConf - getOrientationConfidence
+
+-----------------------------------------
+At the start of each session
+Write TimeStamp
+
+count framenumbers
+for frame f iterate over user data and write
+f user&skeletonData
+

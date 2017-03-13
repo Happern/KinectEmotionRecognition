@@ -1,0 +1,17 @@
+   513081	INFO      	Log	XnLog.cpp	349	New log started on 2017-02-10 17:49:02
+   513127	INFO      	Log	XnLog.cpp	322	--- Filter Info --- Minimum Severity: VERBOSE
+   513183	VERBOSE   	OniContext	OniContext.cpp	144	No override device in configuration file
+   513221	VERBOSE   	OniContext	OniContext.cpp	155	Configuration has been read from '/Users/happern/Library/DeveloperUserInstalled/of_v0.9.8_osx_release/apps/myApps/kinectTest/bin/kinectTestDebug.app/Contents/MacOS/OpenNI.ini'
+   513229	VERBOSE   	OniContext	OniContext.cpp	162	OpenNI 2.2.0 (Build 21)-MacOSX (May 29 2013 14:03:30)
+   513235	VERBOSE   	OniContext	OniContext.cpp	184	Using '/Users/happern/Library/DeveloperUserInstalled/of_v0.9.8_osx_release/apps/myApps/kinectTest/bin/kinectTestDebug.app/Contents/MacOS/OpenNI2/Drivers' as driver path
+   513240	VERBOSE   	OniContext	OniContext.cpp	207	Looking for drivers in drivers repository '/Users/happern/Library/DeveloperUserInstalled/of_v0.9.8_osx_release/apps/myApps/kinectTest/bin/kinectTestDebug.app/Contents/MacOS/OpenNI2/Drivers'
+   623807	INFO      	Log	XnLog.cpp	349	New log started on 2017-02-10 17:49:02
+   623840	INFO      	Log	XnLog.cpp	322	--- Filter Info --- Minimum Severity: VERBOSE
+   623850	VERBOSE   	xnUSB	XnLinuxUSB.cpp	379	Initializing USB...
+   627986	INFO      	xnUSB	XnLinuxUSB.cpp	407	USB is initialized.
+   643285	INFO      	Log	XnLog.cpp	349	New log started on 2017-02-10 17:49:02
+   643316	INFO      	Log	XnLog.cpp	322	--- Filter Info --- Minimum Severity: VERBOSE
+   643325	VERBOSE   	xnUSB	XnLinuxUSB.cpp	379	Initializing USB...
+   692984	INFO      	xnUSB	XnLinuxUSB.cpp	407	USB is initialized.
+   834196	VERBOSE   	OniContext	OniContext.cpp	389	Trying to open device by URI '(NULL)'
+   834241	ERROR     	OniContext	OniContext.cpp	399	Can't open default device - none found
