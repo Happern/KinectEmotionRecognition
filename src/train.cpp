@@ -8,14 +8,14 @@
 
 #include "train.hpp"
 
-std::vector<std::vector<std::vector<frameFeatures>>> prepData() {
+std::vector<std::vector<std::vector<frameFeatures>>> prepData(std::string dataPath) {
     std::vector<std::vector<std::vector<frameFeatures>>> processedSessions;
     
     std::vector<std::vector<frameFeatures>> processedSession;
     std::vector<frameFeatures> processedMovement;
     frameFeatures prev;
     
-    std::vector<std::vector<std::vector<recordedFrame>>> sessions = getRecordedFrames("../Resources/output.txt");
+    std::vector<std::vector<std::vector<recordedFrame>>> sessions = getRecordedFrames(dataPath);
     
     for(std::vector<std::vector<recordedFrame>> session : sessions) {
         for (std::vector<recordedFrame> movement : session) {

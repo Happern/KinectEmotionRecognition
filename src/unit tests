@@ -1,0 +1,27 @@
+
+/* unit test for minMaxPoints
+
+cv::Point3f p(1,1,1);
+cv::Point3f q(2,2,2);
+cv::Point3f r(3,3,3);
+
+cv::Point3f points[3] = {p, q, r};
+
+std::vector<float> lalal = minMaxPoints(points, 3);
+
+std::cout << lalal[0] << " " << lalal[1] << " " << lalal[2] << " " << lalal[3] << " " << lalal[4] <<  " " << lalal[5] << "\n";
+
+*/
+
+/* point symmetric to line unit test
+cv::Point3f p1(-1,0,0);
+cv::Point3f p2(1,0,0);
+cv::Point3f p3(0,1,0);
+
+cv::Point3f symm = pointSymmetricToLine(p1, p2, p3);
+
+std::cout << symm.x << " " << symm.y << " " << symm.z << "\n";*/
+
+
+//./bin/kinectTestDebug/Contents/Resources
+// getRecordedFrames("/Users/happern/Library/DeveloperUserInstalled/of_v0.9.8_osx_release/apps/myApps/KinectEmotionRecognition/bin/KinectEmotionRecognitionDebug.app/Contents/Resources/deneme.txt");

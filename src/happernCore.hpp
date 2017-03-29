@@ -154,7 +154,7 @@ inline std::string point3fToString(NitePoint3f p) {
 
 inline std::string quaternionToString(nite::Quaternion q) {
     //TODO implement
-    return "quaternion";
+    return std::to_string(q.w) + " " + std::to_string(q.x) + " " + std::to_string(q.y) + " " + std::to_string(q.z);;
 }
 
 #endif /* happernCore_hpp */

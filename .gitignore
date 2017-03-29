@@ -1,0 +1,12 @@
+KinectEmotionRecognition.xcodeproj
+Project.xcconfig
+Makefile
+addons.make
+config.make
+bin/*
+build/*
+build.sh
+run.sh
+openFrameworks-Info.plist
+*.txt
+

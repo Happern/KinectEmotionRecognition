@@ -19,6 +19,6 @@
 using namespace cv;
 
 void train();
-std::vector<std::vector<std::vector<frameFeatures>>> prepData();
+std::vector<std::vector<std::vector<frameFeatures>>> prepData(std::string dataPath);
 
 #endif /* train_hpp */

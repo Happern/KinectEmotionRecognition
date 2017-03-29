@@ -2,8 +2,12 @@
 
 #include <string>
 
+#include <ctime>
+
 #include "ofMain.h"
+
 #include "NiTE.h"
+#include "OpenNI.h"
 
 #include "frameFeatures.hpp"
 #include "record.hpp"
@@ -43,6 +47,9 @@ public:
     void update();
     void draw();
     
+    void mousePressed(int x, int y, int button);
+    void checkSensors(openni::Device * dev);
+    void toggleRecordButton();
     void calculateHistogram(float* histogram, int histogramSize, const openni::VideoFrameRef& frame);
     ofVec2f getJointInDepthCoordinates(nite::UserData user, nite::JointType jointType);
     void drawUser(user_t user);
@@ -50,13 +57,22 @@ public:
     ofPixels depthPixels;
     ofTexture depthTexture;
     
-    openni::Device device;
     nite::UserTracker userTracker;
     
     float depthHist[MAX_DEPTH];
     user_t users[MAX_USERS];
     
+    // variables used in the record mode
+    bool isRecording = false;
+    bool isShutdown = false;
+    int recordingCounter = 0;
+    const ofRectangle recordButton = ofRectangle(50, 50, 50, 50);
+    const ofRectangle stopButton = ofRectangle(700, 500, 20, 20);
+    openni::Device dev;
+    
+    
+    
+    int runMode = 0; //0 for detect, 1 for record
     int frameCount;
-    bool isRecording = true; //Set this from the arguments -- move to main
-    std::string logFileName = "output.txt"; //possibly move this somewhere else, also get from the arguments
+    std::string logFileName = "deneme.txt"; //get as an argument
 };

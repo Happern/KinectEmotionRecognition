@@ -1,6 +1,9 @@
 #include "ofMain.h"
 #include "Nite.h"
+
 #include "ofApp.h"
+#include "ofAppViewer.hpp"
+
 #include "opencv2/core/core.hpp"
 #include "train.hpp"
 
@@ -17,39 +20,29 @@ int main( ){
 	// pass in width and height too:
 	//ofRunApp(new ofApp());
 
+    ofSetupOpenGL(800, 600, OF_WINDOW);
     
-    /* unit test for minMaxPoints
+    std::string mode = "";
     
-    cv::Point3f p(1,1,1);
-    cv::Point3f q(2,2,2);
-    cv::Point3f r(3,3,3);
-    
-    cv::Point3f points[3] = {p, q, r};
-    
-    std::vector<float> lalal = minMaxPoints(points, 3);
-    
-    std::cout << lalal[0] << " " << lalal[1] << " " << lalal[2] << " " << lalal[3] << " " << lalal[4] <<  " " << lalal[5] << "\n";
-    
-    */
-
-   /* point symmetric to line unit test
-    cv::Point3f p1(-1,0,0);
-    cv::Point3f p2(1,0,0);
-    cv::Point3f p3(0,1,0);
-    
-    cv::Point3f symm = pointSymmetricToLine(p1, p2, p3);
-    
-    std::cout << symm.x << " " << symm.y << " " << symm.z << "\n";*/
-    
-    //train();
-    
-    
-   /*ofSetupOpenGL(800, 600, OF_WINDOW);
-   ofRunApp(new ofApp());*/
-
-    //./bin/kinectTestDebug/Contents/Resources
-    //getRecordedFrames("/Users/happern/Library/DeveloperUserInstalled/of_v0.9.8_osx_release/apps/myApps/kinectTest/bin/kinectTestDebug.app/Contents/Resources/bin/kinectTestDebug/Contents/Resources/output.txt");
-    
-    prepData();
+    //TODO below will be taken from the commandline or will be chosen from a gui
+    if (mode == "train") {
+        // no need for GUI -- or ofApp
+        // get data path from the user
+        std::string path = "../Resources/deneme.txt";
+        prepData(path);
+        //train();
+    } else if (mode == "view") {
+        // if filename is provided read from file, pass readFromFile as true / 1
+        // o.w. read from device
+        // check streams, if ir set readMode as 0 if color set readMode as 1
+        ofRunApp(new ofAppViewer());
+    } else if (mode == "record") {
+        // pass mode as 1
+        // pass recording directory
+        ofRunApp(new ofApp());
+    } else {
+        // default mode would be to detect emotions on runtime
+        ofRunApp(new ofApp());
+    }
     
    }

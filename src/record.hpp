@@ -15,6 +15,7 @@
 #include <ctime>
 
 #include "NiTE.h"
+#include "OpenNI.h"
 
 #include "happernCore.hpp"
 #include "fileConstants.hpp"
@@ -43,8 +44,11 @@ const nite::JointType JOINTS[15] =
     nite::JOINT_RIGHT_FOOT,
 };
 
-
-void startRecording(std::string path);
+void initLogRecording(std::string logPath);
+void initOniRecording(openni::Device * dev);
+void startRecording(const char * oniPath);
+void stopRecording();
+void finishRecording();
 void writeToFile(std::string log);
 void recordData(int frameCount, nite::UserData);
 std::string getUserData(nite::UserData user);

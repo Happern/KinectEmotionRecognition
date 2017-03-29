@@ -10,28 +10,87 @@
 
 //why can this not go in the header file?
 std::ofstream out;
+openni::Recorder sessionRecorder;
+openni::VideoStream irStream;
+openni::VideoStream colorStream;
+openni::VideoStream depthStream;
 
-void startRecording(std::string path) {
+bool recorderInitialized = false;
+
+void initLogRecording(std::string logPath) {
     // std::ios::app is the open mode "append" meaning
     // new data will be written to the end of the file.
-    out.open(path, std::ios::app);
+    out.open(logPath, std::ios::app);
     if(!out.is_open()) {
         std::cout<< "File could not be opened or created for writing\n";
         return;
     } else {
         std::cout << "File opened\n";
     }
+}
+
+void initOniRecording(openni::Device * dev){
+    //init openni videostream
+    irStream.create(*dev, openni::SENSOR_IR);
+    colorStream.create(*dev, openni::SENSOR_COLOR);
+    //depthStream.create(*dev, openni::SENSOR_DEPTH);
     
-    //append timestamp
-    std::time_t lala = std::time(nullptr);
-    std::string initSession = "Session Start ";
-    initSession += std::asctime(std::localtime(&lala));
-    writeToFile(initSession);
+    colorStream.start();
+    irStream.start();
+    
+    /*attach to video stream
+    sessionRecorder.create(oniPath);
+    sessionRecorder.attach(irStream);
+    sessionRecorder.attach(colorStream);
+    // sessionRecorder.attach(depthStream);*/
+    
+    recorderInitialized = true;
+
+}
+
+void startRecording(const char * oniPath) {
+    if (recorderInitialized) {
+        //append timestamp
+        std::time_t lala = std::time(nullptr);
+        std::string initSession = "Session Start ";
+        initSession += std::asctime(std::localtime(&lala));
+        writeToFile(initSession);
+        
+        //start recording
+        sessionRecorder.create(oniPath);
+        if(sessionRecorder.isValid()) {
+            sessionRecorder.attach(irStream);
+            sessionRecorder.attach(colorStream);
+           // sessionRecorder.attach(depthStream);
+            sessionRecorder.start();
+        } else {
+            std::cout << "recorder is not valid :( \n";
+        }
+       
+    }
+}
+
+void stopRecording() {
+    if(recorderInitialized) {
+        writeToFile("End");
+        
+        sessionRecorder.stop();
+        sessionRecorder.destroy();
+    }
 }
 
 void finishRecording() {
-    writeToFile("End");
-    out.close();
+    if (recorderInitialized) {
+        sessionRecorder.destroy();
+        irStream.destroy();
+        colorStream.destroy();
+        depthStream.destroy();
+        
+        out.close();
+        std::cout << "File closed\n";
+        
+        recorderInitialized = false;
+    }
 }
 
 void writeToFile(std::string log) {
