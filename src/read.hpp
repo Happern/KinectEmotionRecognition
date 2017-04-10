@@ -15,7 +15,7 @@
 #include <string>
 #include <vector>
 
-#include "recordedFrame.cpp"
+#include "recordedFrame.hpp"
 
 std::vector<std::vector<recordedFrame>> getSessionData();
 std::vector<std::vector<std::vector<recordedFrame>>> getRecordedFrames(std::string path);
