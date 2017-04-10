@@ -20,29 +20,42 @@
     }
     frameFeatures::frameFeatures(const nite::Skeleton& skeleton, const nite::Point3f com, frameFeatures& previousFrame) {
         centerOfMass = niteToCv(com);
-        initPositions(skeleton);
+        initPositionsAndOrientations(skeleton);
         initKinematicFeatures(previousFrame);
     }
-    
-    frameFeatures::frameFeatures(std::vector<cv::Point3f> _position, const cv::Point3f com, frameFeatures& previousFrame) {
+
+    // variable names preceded with _ are assigned to a class variable without modification
+    frameFeatures::frameFeatures(std::vector<cv::Point3f> _position, std::vector<nite::Quaternion> _orientations, const cv::Point3f _com, frameFeatures& previousFrame) {
         position = _position;
-        centerOfMass = com;
+        orientations = _orientations;
+        centerOfMass = _com;
         initKinematicFeatures(previousFrame);
     }
    
     
-    void frameFeatures::initPositions(const nite::Skeleton& skeleton) {
+    void frameFeatures::initPositionsAndOrientations(const nite::Skeleton& skeleton) {
         for (int i = nite::JOINT_HEAD; i < nite::JOINT_RIGHT_FOOT; i++) {
             //position[i] = niteToCv(skeleton.getJoint((JointType)i).getPosition());
-            position.push_back(niteToCv(skeleton.getJoint((JointType)i).getPosition()));
+            nite::SkeletonJoint joint = skeleton.getJoint((JointType)i);
+            position.push_back(niteToCv(joint.getPosition()));
+            orientations.push_back(joint.getOrientation());
         }
     }
     
     void frameFeatures::initKinematicFeatures(frameFeatures& previousFrame) {
+        nite::Quaternion compositeRotation(1,1,1,1);
+        nite::Quaternion currentOrientation;
         
+        // TODO implement better way to loop through all the joints
         for (int i = nite::JOINT_HEAD; i < nite::JOINT_RIGHT_FOOT; i++) {
             velocity[i] = position[i] - previousFrame.position[i];
             velocityNorm[i] = cv::norm(velocity[i]);
+            
+            // composition of all non-zero orientations
+            currentOrientation = orientations[i];
+            if (!checkZeroQuaternion(currentOrientation)) {
+                compositeRotation = compositeRotation * orientations[i];
+            }
         }
         
         for (int joint: KINEMATIC_JOINTS) {
@@ -51,7 +64,11 @@
         }
         
         //TODO add direction
+        // composite rotation/orientation will be used as the directio for now
+        direction = compositeRotation;
         
+        // elbow orientations will be used separately, and possibly shoulders
+     
         //kineticEnergy = calculateKineticEnergy();
     }
     

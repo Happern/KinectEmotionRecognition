@@ -25,7 +25,7 @@ std::vector<std::vector<std::vector<frameFeatures>>> prepData(std::string dataPa
                     prev = processedMovement.back();
                 }
                 
-                frameFeatures f(frame.positions, frame.centerOfMass, prev);
+                frameFeatures f(frame.positions, frame.orientations, frame.centerOfMass, prev);
                 processedMovement.push_back(f);
             }
             processedSession.push_back(processedMovement);

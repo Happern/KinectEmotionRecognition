@@ -33,7 +33,7 @@ class frameFeatures {
 public:
     frameFeatures();
     frameFeatures(const nite::Skeleton& skeleton, const nite::Point3f com, frameFeatures& previousFrame);
-    frameFeatures(std::vector<cv::Point3f> _position, const cv::Point3f com, frameFeatures& previousFrame);
+    frameFeatures(std::vector<cv::Point3f> _position, std::vector<nite::Quaternion> _orientations_, const cv::Point3f _com, frameFeatures& previousFrame);
 private:
     cv::Point3f centerOfMass;
     
@@ -61,7 +61,10 @@ private:
     float contractionIndex;
     float dynamicContractionIndex;
     
-    void initPositions(const nite::Skeleton& skeleton);
+    nite::Quaternion direction;
+    std::vector<nite::Quaternion> orientations;
+    
+    void initPositionsAndOrientations(const nite::Skeleton& skeleton);
     void initKinematicFeatures(frameFeatures& previousFrame);
     void initPostureFeatures(frameFeatures& previousFrame);
     float calculateKineticEnergy();
