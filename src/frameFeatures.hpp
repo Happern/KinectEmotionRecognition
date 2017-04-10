@@ -75,6 +75,7 @@ private:
     float calculate3dSymmetry();
     float calculateSymIndex(float leftDistance, float rightDistance);
     float calculateTriangularSymmetry(int leftJointIndex, int rightJointIndex);
+    void initJointEnergyWeights(); //TODO will be replaced
 };
 
 #endif /* frameFeatures_hpp */
