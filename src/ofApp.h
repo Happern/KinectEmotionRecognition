@@ -73,6 +73,7 @@ public:
     
     
     int runMode = 0; //0 for detect, 1 for record
+    int videoMode = 0; // 0 for off, 1 for on
     int frameCount;
-    std::string logFileName = "deneme.txt"; //get as an argument
+    std::string logFileName = "movement_test.txt"; //get as an argument
 };

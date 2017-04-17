@@ -6,6 +6,7 @@
 
 #include "opencv2/core/core.hpp"
 #include "train.hpp"
+#include "experimental.hpp"
 
 
 //========================================================================
@@ -28,8 +29,11 @@ int main( ){
     if (mode == "train") {
         // no need for GUI -- or ofApp
         // get data path from the user
-        std::string path = "../Resources/deneme.txt";
-        prepData(path);
+        std::string path = "../Resources/basic_movement_measurements/deneme.txt";
+        std::vector<float> labels{1.0,2.0,3.0, 4.0, 1.0, 2.0, 3.0, 4.0};
+        std::vector<std::vector<std::vector<frameFeatures>>> data = prepData(path);
+        //minmax(data);
+        trainFromSessionData(data, labels);
         //train();
     } else if (mode == "view") {
         // if filename is provided read from file, pass readFromFile as true / 1

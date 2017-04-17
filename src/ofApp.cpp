@@ -9,7 +9,10 @@ void ofApp::setup() {
     
     // get modes from the user, if the app is opened in recording modes
     if (runMode == 1) {
-        initOniRecording(&dev);
+        if (videoMode == 1) {
+          initOniRecording(&dev);
+        }
+        
         initLogRecording(logFileName);
     }
     
@@ -94,7 +97,8 @@ void ofApp::update() {
                     frameFeatures f(user.getSkeleton(), user.getCenterOfMass(), prev);
                     users[id].features.push_back(f);
                     
-                    //PREDICT USER EMOTION
+                    int prediction = predictFromLiveData(users[id].features);
+                    std::cout << "user " << to_string(id) << ": " << to_string(prediction) << "\n";
                 }
             }
         }
@@ -204,7 +208,7 @@ void ofApp::toggleRecordButton() {
         //std::time_t lala = std::time(nullptr);
         //const char * timeStr = std::asctime(std::localtime(&lala));
         std::string filename = "onifile" +  std::to_string(recordingCounter) + ".oni";
-        startRecording(filename.c_str());
+        startRecording(videoMode, filename.c_str());
     }
     
     isRecording = !isRecording;
