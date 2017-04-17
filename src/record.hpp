@@ -46,7 +46,7 @@ const nite::JointType JOINTS[15] =
 
 void initLogRecording(std::string logPath);
 void initOniRecording(openni::Device * dev);
-void startRecording(const char * oniPath);
+void startRecording(int videoMode, const char * oniPath);
 void stopRecording();
 void finishRecording();
 void writeToFile(std::string log);

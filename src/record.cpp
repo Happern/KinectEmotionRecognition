@@ -39,56 +39,56 @@ void initOniRecording(openni::Device * dev){
     irStream.start();
     
     /*attach to video stream
-    sessionRecorder.create(oniPath);
-    sessionRecorder.attach(irStream);
-    sessionRecorder.attach(colorStream);
-    // sessionRecorder.attach(depthStream);*/
+     sessionRecorder.create(oniPath);
+     sessionRecorder.attach(irStream);
+     sessionRecorder.attach(colorStream);
+     // sessionRecorder.attach(depthStream);*/
     
     recorderInitialized = true;
-
+    
 }
 
-void startRecording(const char * oniPath) {
-    if (recorderInitialized) {
-        //append timestamp
-        std::time_t lala = std::time(nullptr);
-        std::string initSession = "Session Start ";
-        initSession += std::asctime(std::localtime(&lala));
-        writeToFile(initSession);
-        
+void startRecording(int videoMode, const char * oniPath) {
+    
+    //append timestamp
+    std::time_t lala = std::time(nullptr);
+    std::string initSession = "Session Start ";
+    initSession += std::asctime(std::localtime(&lala));
+    writeToFile(initSession);
+    
+    if(videoMode == 1 && recorderInitialized) {
         //start recording
         sessionRecorder.create(oniPath);
         if(sessionRecorder.isValid()) {
             sessionRecorder.attach(irStream);
             sessionRecorder.attach(colorStream);
-           // sessionRecorder.attach(depthStream);
+            // sessionRecorder.attach(depthStream);
             sessionRecorder.start();
         } else {
             std::cout << "recorder is not valid :( \n";
         }
-       
+        
     }
 }
 
 void stopRecording() {
+    writeToFile("End");
+   
     if(recorderInitialized) {
-        writeToFile("End");
-        
         sessionRecorder.stop();
         sessionRecorder.destroy();
     }
 }
 
 void finishRecording() {
+    out.close();
+    std::cout << "File closed\n";
+    
     if (recorderInitialized) {
         sessionRecorder.destroy();
         irStream.destroy();
         colorStream.destroy();
         depthStream.destroy();
-        
-        out.close();
-        std::cout << "File closed\n";
-        
         recorderInitialized = false;
     }
 }
