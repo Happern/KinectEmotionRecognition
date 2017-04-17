@@ -52,7 +52,7 @@ std::vector<std::vector<recordedFrame>> getSessionData() {
     std::getline(in, line);
     std::getline(in, line);
     
-    std::cout << line << "\n";
+    //std::cout << line << "\n";
     
     while(in.good()) {
         

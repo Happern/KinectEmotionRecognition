@@ -41,7 +41,7 @@
         yMin = cv::min(yMin, currPoint.y);
         zMin = cv::min(zMin, currPoint.z);
         
-        std::cout << xMin << " " << yMin << " " << zMin << "\n";
+        //std::cout << xMin << " " << yMin << " " << zMin << "\n";
     }
     
     std::vector<float> coords = {xMax, xMin, yMax, yMin, zMax, zMin};
@@ -71,7 +71,7 @@
         yMin = cv::min(yMin, currPoint.y);
         zMin = cv::min(zMin, currPoint.z);
         
-        std::cout << xMin << " " << yMin << " " << zMin << "\n";
+        //std::cout << xMin << " " << yMin << " " << zMin << "\n";
     }
     
     std::vector<float> coords = {xMax, xMin, yMax, yMin, zMax, zMin};
