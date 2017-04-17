@@ -31,10 +31,7 @@ const int SYMM_TRI_JOINTS[NUM_SYMM_TRI_JOINTS] = {JOINT_LEFT_HAND, JOINT_RIGHT_H
 
 class frameFeatures {
 public:
-    frameFeatures();
-    frameFeatures(const nite::Skeleton& skeleton, const nite::Point3f com, frameFeatures& previousFrame);
-    frameFeatures(std::vector<cv::Point3f> _position, std::vector<nite::Quaternion> _orientations_, const cv::Point3f _com, frameFeatures& previousFrame);
-private:
+    // TODO it is priobably better to make these private and find a way to work with that
     cv::Point3f centerOfMass;
     
     //cv::Point3f position[NUM_JOINTS] ;
@@ -64,6 +61,10 @@ private:
     nite::Quaternion direction;
     std::vector<nite::Quaternion> orientations;
     
+    frameFeatures();
+    frameFeatures(const nite::Skeleton& skeleton, const nite::Point3f com, frameFeatures& previousFrame);
+    frameFeatures(std::vector<cv::Point3f> _position, std::vector<nite::Quaternion> _orientations_, const cv::Point3f _com, frameFeatures& previousFrame);
+private:
     void initPositionsAndOrientations(const nite::Skeleton& skeleton);
     void initKinematicFeatures(frameFeatures& previousFrame);
     void initPostureFeatures(frameFeatures& previousFrame);

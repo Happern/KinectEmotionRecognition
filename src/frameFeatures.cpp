@@ -22,6 +22,7 @@ frameFeatures::frameFeatures(const nite::Skeleton& skeleton, const nite::Point3f
     centerOfMass = niteToCv(com);
     initPositionsAndOrientations(skeleton);
     initKinematicFeatures(previousFrame);
+    initPostureFeatures(previousFrame);
 }
 
 // variable names preceded with _ are assigned to a class variable without modification
@@ -30,6 +31,7 @@ frameFeatures::frameFeatures(std::vector<cv::Point3f> _position, std::vector<nit
     orientations = _orientations;
     centerOfMass = _com;
     initKinematicFeatures(previousFrame);
+    initPostureFeatures(previousFrame);
 }
 
 
@@ -63,8 +65,7 @@ void frameFeatures::initKinematicFeatures(frameFeatures& previousFrame) {
         jerk[joint] = jerk[joint] - previousFrame.jerk[joint];
     }
     
-    //TODO add direction
-    // composite rotation/orientation will be used as the directio for now
+    // composite rotation/orientation will be used as the direction for now
     direction = compositeRotation;
     
     // elbow orientations will be used separately, and possibly shoulders
@@ -107,9 +108,19 @@ float frameFeatures::calculateKineticEnergy() {
 }
 
 float frameFeatures::calculateContractionIndex() {
-    std::vector<float> coords = minMaxPoints(position);
+    std::vector<float> bCoords = minMaxPoints(position);
+    float wholeBodyVolume = (bCoords[0] - bCoords[1]) * (bCoords[2] - bCoords[3]) * (bCoords[4] - bCoords[5]);
     
-    return (coords[0] - coords[1]) * (coords[2] - coords[3]) * (coords[4] - coords[5]);
+    std::vector<cv::Point3f> torsoPositions;
+    torsoPositions.push_back(position[nite::JOINT_LEFT_SHOULDER]);
+    torsoPositions.push_back(position[nite::JOINT_RIGHT_SHOULDER]);
+    torsoPositions.push_back(position[nite::JOINT_LEFT_HIP]);
+    torsoPositions.push_back(position[nite::JOINT_RIGHT_HIP]);
+
+    std::vector<float> tCoords = minMaxPoints(torsoPositions);
+    float torsoVolume = (tCoords[0] - tCoords[1]) * (tCoords[2] - tCoords[3]) * (tCoords[4] - tCoords[5]);
+    
+    return torsoVolume/wholeBodyVolume;
 }
 
 cv::Point3f frameFeatures::calculateLeaningPosition() {
@@ -156,7 +167,11 @@ float frameFeatures::calculate3dSymmetry () {
         sumZ += diff.z /absDiff.z;
     }
     
-    return cv::sqrt((sumX * sumX) + (sumY * sumY) + (sumZ * sumZ)) / (sidePairs * sidePairs);
+    float aveX = sumX / sidePairs;
+    float aveY = sumY / sidePairs;
+    float aveZ = sumZ / sidePairs;
+    
+    return cv::norm(cv::Point3f(aveX, aveY, aveZ));
 }
 
 float frameFeatures::calculateSymIndex(float leftDistance, float rightDistance) {
